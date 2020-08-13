@@ -78,7 +78,7 @@ Install via symbolic link...
 ```Bash
 cd ~/git/hub/paranoid-linux/script-apt-get
 
-./linked-install.sh
+sudo ./linked-install.sh
 ```
 
 
@@ -163,6 +163,23 @@ _log_dir="${HOME}/script-logs" script-apt-get upgrade
 tee -a ~/git/hub/paranoid-linux/script-apt-get/configurations.sh <<'EOF'
 _log_dir="${HOME}/script-logs" script-apt-get upgrade
 EOF
+```
+
+
+------
+
+
+For multi-user systems it is a good idea to clone this project to a `root` owned directory instead, eg...
+
+
+```Bash
+cd /usr/local/etc
+
+sudo git clone git@github.com:paranoid-linux/script-apt-get.git
+
+cd script-apt-get
+
+sudo ./linked-install.sh
 ```
 
 
