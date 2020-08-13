@@ -77,7 +77,7 @@ EOF
 
 ## Defaults
 _script_source="${__DIR__}/script-apt-get"
-_script_destination="${HOME}/bin/script-apt-get"
+_script_destination="/usr/local/sbin/script-apt-get"
 
 
 (("${#@}")) && {
