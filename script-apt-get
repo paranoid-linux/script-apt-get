@@ -11,7 +11,7 @@ __DIR_NAME__="${__DIR__##*/}"
 __NAME__="${__SOURCE__##*/}"
 __PATH__="${__DIR__}/${__NAME__}"
 __AUTHOR__='S0AndS0'
-__DESCRIPTION__='Logs `install` and `update` actions for `apt-get` via `script`'
+__DESCRIPTION__='Logs `install` and `upgrade` actions for `apt-get` via `script`'
 
 
 ## Source dependencies
@@ -93,6 +93,11 @@ EOF
 ## Defaults
 _date_format="${_date_format:-"%Y%m%d"}"
 _log_dir="${_log_dir:-"${HOME}/Documents/logs"}"
+_executing_user="${SUDO_USER:-${USER}}"
+_executing_group="${GROUPS}"
+[[ "${_executing_user}" != 'root' ]] && {
+    _executing_group="$(groups "${_executing_user}" | awk '{print $3}')"
+}
 
 
 _operation="${@:1:1}"
@@ -117,12 +122,18 @@ _arguments="${@:2}"
             } || {
                 _file_name="${_time_stamp}.script"
             }
-            _log_path="${_log_dir}/apt-get/${_operation}/${_file_name}"
-            mkdir -vp "$(dirname "${_log_path}")"
+
+            _log_directory="${_log_dir}/apt-get/${_operation}"
+            [[ -d "${_log_directory}" ]] || {
+                mkdir -vp "${_log_directory}"
+                chown -R "${_executing_user}":"${_executing_group}" "${_log_directory}"
+            }
+
+            _log_path="${_log_directory}/${_file_name}"
 
             script -ac "apt-get ${_operation} ${_arguments}" "${_log_path}"
 
-            chown "${USER}":"${GROUPS}" "${_log_path}"
+            chown "${_executing_user}":"${_executing_group}" "${_log_path}"
         ;;
         *)
             apt-get ${_operation} ${_arguments}
