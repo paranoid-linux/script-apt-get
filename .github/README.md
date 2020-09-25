@@ -1,10 +1,10 @@
 # Script Apt Get
 [heading__top]:
   #script-apt-get
-  "&#x2B06; Logs `install` and `update` actions for `apt-get` via `script`"
+  "&#x2B06; Logs `install` and `upgrade` actions for `apt-get` via `script`"
 
 
-Logs `install` and `update` actions for `apt-get` via `script`
+Logs `install` and `upgrade` actions for `apt-get` via `script`
 
 
 ## [![Byte size of Script Apt Get][badge__main__script_apt_get__source_code]][script_apt_get__main__source_code] [![Open Issues][badge__issues__script_apt_get]][issues__script_apt_get] [![Open Pull Requests][badge__pull_requests__script_apt_get]][pull_requests__script_apt_get] [![Latest commits][badge__commits__script_apt_get__main]][commits__script_apt_get__main] 
@@ -277,6 +277,8 @@ ______
 
 - [GitHub -- `github-utilities/make-readme`](https://github.com/github-utilities/make-readme)
 
+- [Unix StackExchange -- How to get the name of the user who executed a bash script as sudo?](https://unix.stackexchange.com/questions/137175/)
+
 
 ______
 
@@ -288,7 +290,7 @@ ______
 
 
 ```
-Logs `install` and `update` actions for `apt-get` via `script`
+Logs `install` and `upgrade` actions for `apt-get` via `script`
 Copyright (C) 2020 S0AndS0
 
 This program is free software: you can redistribute it and/or modify
